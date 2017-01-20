@@ -1,1 +1,1 @@
-куку blabla
+blabla
