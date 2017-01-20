@@ -1,0 +1,25 @@
+{% extends 'notebook/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+Edit Note
+{% endblock %}
+
+{% block login %}
+     <a href="{% url 'logout' %}">Logout ({{ request.user.username }})</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+{% endblock %}
+
+{% block content %}
+    <h2 align="center">Edit contact</h2>
+    <form  action="" method="POST">
+        {% csrf_token %}
+        <br>
+        {{ form.as_p }}
+        <br>
+        <button align = "center" type="submit" class = "myButton">OK</button>&nbsp&nbsp&nbsp<button class = "myButton" align = "center" onClick='location.href="{% url "table" %}"'>Cancel</button></form>
+        <br>
+
+    <br>
+
+
+{% endblock %}

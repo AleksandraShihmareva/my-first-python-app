@@ -1,0 +1,37 @@
+{% load staticfiles %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    {% block links %}{% endblock %}
+    <link rel="stylesheet" type="text/css" href="{% static 'notebook/css/main.css' %}">
+    <script src="{% static 'notebook/script/main.js' %}"></script>
+    <script src="{% static 'notebook/script/plugins/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'notebook/script/plugins/jquery.tablesorter.js' %}"></script>
+</head>
+{% block body %}
+{% endblock %}
+<table class="mainTable" width = "100%" border = 0 bgcolor=#99CC99>
+  <tr class = "autorizathion">
+    <td width = "100%" >
+	<p align=center><big><big>Notebook 1.0 </big></big></p>
+	<p align="right">
+    {% block login %}
+    {% endblock %}
+	</p>
+	</td>
+  </tr>
+  <tr class = "mainPage">
+	<td width = "100%" align = "center">
+        {% block content %}
+         {% endblock %}
+	</td>
+  </tr>
+  <tr class = "copyright">
+	<td content-width = "100%" ><p align="right">© Shikhmareva Aleksandra&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p></td>
+  </tr>
+</table>
+</body>
+</html>

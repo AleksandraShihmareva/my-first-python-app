@@ -1,0 +1,32 @@
+{% extends 'notebook/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+Notebook 1.0
+{% endblock %}
+
+{% block login %}
+    <form action="" method="post" align="right">
+    {% csrf_token %}
+        {% if login_error %}<a align="right">{{ login_error }}&nbsp&nbsp&nbsp</a>{% endif %}
+       <br>
+       <input type = "text" placeholder="Enter your login" name="username"> 
+       <input type="password" placeholder="Enter your password" name="password">
+	   <button type="submit">OK</button>
+     </form>
+
+{% endblock %}
+
+{% block body %}
+    <body>
+{% endblock %}
+
+{% block content %}
+	<table>
+	<tr>
+	  <td>Welcome to Notebook 1.0!</td>
+        <td><img src = "{% static 'notebook/images/address_book_8388.png' %}"></td>
+	<tr>
+	</table>
+{% endblock %}
+

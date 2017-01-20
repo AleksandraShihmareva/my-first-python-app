@@ -1,0 +1,62 @@
+{% extends 'notebook/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+table
+{% endblock %}
+
+{% block body %}
+<body height="100%" onload="ShowTable()">
+{% endblock %}
+
+{% block login %}
+     <a href="{% url 'logout' %}">Logout ({{ request.user.username }})</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+{% endblock %}
+
+{% block content %}
+    <br>
+    <br>
+    <div class="overlay" title="окно"></div>
+    <div class="popup">
+    <div class="close_window">x</div>
+        {% if list %}
+            This people celebrate their birthday today:
+            <ul>
+            {% for note in list %}
+                <li>{{note.userName}}</li>
+            {% endfor %}
+            </ul>
+        {%  else %}
+            <div>No one has a birthday today</div>
+        {% endif %}
+
+    </div>
+    <input type="hidden" class="globalFlag" value="{{ globalFlag }}">
+    <h2 align="center">My contacts</h2><img width="50" height="50" title="Edit contact" src = "{% static 'notebook/images/contacts.png' %}">
+    <br>
+    <br>
+    <table border="1" id="myTable" class="paginated">
+       <thead class="paginated">
+            <tr align="center">
+                <td>Name</td><td>Phone nubmer</td><td>Date of birth</td><td></td><td></td>
+            </tr>
+       </thead>
+       <tbody>
+    {% for noteName in noteNames %}
+            <tr class="myContactsList">
+                <td>{{noteName.userName}}</td>
+                <td>{{ noteName.phoneNumber }}</td>
+                <td>{{ noteName.dateOfBirth }}</td>
+                <td><a href="{% url 'editnote' noteName.id %}"><img width="30" height="30" title="Edit contact" src = "{% static 'notebook/images/edit.png' %}"></a></td>
+                <td><a href="{% url 'removenote' noteName.id %}"><img width="30" height="30" title="Remove contact" src = "{% static 'notebook/images/delete.png' %}"></a></td>
+            </tr>
+    {% endfor %}
+       </tbody>
+    </table>
+    <br>
+    <button class = "myButton" align = "center" onClick='location.href="{% url "addnote" %}"'>Add contact</button>
+    <br>
+    <br>
+
+
+{% endblock %}
